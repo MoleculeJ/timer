@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Stupid Timer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <main class="timer-panel" style="
+            background-color: #666666;
+            border-radius: 20px;
+            max-width: 600px;
+            min-width: 600px;
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-family: 'Poppins', san-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: white;">
+            <h1 style="background-color: #990000;
+                border-radius: 10px;
+                display: inline-block;
+                padding: 10px;
+                margin-bottom: 0px;
+                font-family: 'Source Serif 4', serif;
+                font-size: 35px;">Shutdown Duration</h1>
+            <p>The Federal goverment has been shut down for:</p>
+            <div style="display: inline-block;
+                margin-right: 30px;
+                margin-bottom: 0px;
+                margin-left: 4px;
+                padding-left: 25px;">
+                <div id="days" style="background: #990000;
+                    border-radius: 10px;
+                    font-size: 50px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    display: inline-block;
+                    min-width: 70px;"></div>
+                <p style="font-size: 25px;
+                    margin-top: 5px;">days</p>
+            </div>
+            <div style="display: inline-block;
+                margin-right: 30px;
+                margin-bottom: 0px;">
+                <div id="hours" style="background: #990000;
+                    border-radius: 10px;
+                    font-size: 50px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    display: inline-block;
+                    min-width: 70px;"></div>
+                <p style="font-size: 25px;
+                    margin-top: 5px;">hours</p>
+            </div>
+            <p style="display: inline-block;
+                font-size: 50px;
+                margin-right: 15px;
+                margin-bottom: 0px;
+                vertical-align: super;
+                position: relative;
+                top: -50px;"> : </p>
+            <div style="display: inline-block;
+                margin-right: 15px;
+                margin-bottom: 0px;">
+                <div id="minutes" style="background: #990000;
+                    border-radius: 10px;
+                    font-size: 50px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    display: inline-block;
+                    min-width: 70px;"></div>
+                <p style="font-size: 25px;
+                    margin-top: 5px;">minutes</p>
+            </div>
+            <p style="display: inline-block;
+                font-size: 50px;
+                margin-right: 15px;
+                margin-bottom: 0px;
+                vertical-align: super;
+                position: relative;
+                top: -50px;"> : </p>
+            <div style="display: inline-block;
+                margin-right: 30px;
+                margin-bottom: 0px;">
+                <div id="seconds" style="background: #990000;
+                    border-radius: 10px;
+                    font-size: 50px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    display: inline-block;
+                    min-width: 70px"></div>
+                <p style="font-size: 25px;
+                    margin-top: 5px;">seconds</p>
+            </div>
+            <p style="margin-top: 1px;
+                font-family: 'Source Serif 4', serif;">Source: Capital News Service</p>
+        </main>
+        <script>
+            // Set up startTime variable as the starting date and time 
+            const startTime = new Date("2025-10-01T00:01:00").getTime();
+            // Call the function and run it every 1 second (1000 milliseconds)
+            setInterval(() => {
+                // now variable = right now time 
+                const now = new Date().getTime();
+                // elapsed variable = right now time subtracted by the starting date and time  
+                const elapsed = now - startTime;
+                // the result will be in milliseconds so we will change it into normal units 
+                const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+                const seconds = Math.floor((elapsed / 1000) % 60);
+                // make every unit display in two digits form
+                const d = String(days).padStart(2, "0");
+                const h = String(hours).padStart(2, "0");
+                const m = String(minutes).padStart(2, "0");
+                const s = String(seconds).padStart(2, "0");
+                // and the we will display the result in element named timer 
+                document.getElementById("days").textContent = `${d}`;
+                document.getElementById("hours").textContent = `${h}`;
+                document.getElementById("minutes").textContent = `${m}`;
+                document.getElementById("seconds").textContent = `${s}`;
+            }, 1000);
+        </script>
+    </body>
+</html>
