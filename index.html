@@ -6,13 +6,75 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+        <style>
+            @media screen and (max-width: 700px) {
+                .timer-panel {
+                    width: 300px;
+                }
+
+                h1 {
+                    font-size: 20px !important;
+                }
+
+                p {
+                    font-size: 12px !important;
+                }
+
+                .timer-panel div {
+                    font-size: 20px !important;
+                    margin-right: 5px !important;
+                }
+
+                .timer-panel #colon-one {
+                    font-size: 20px !important;
+                    margin-right: 0px !important;
+                    margin-left: 0px !important;
+                    padding-left: 0px;
+                    padding-right: 5px;
+                    top: -35px !important;
+                }
+
+                .timer-panel #colon-two {
+                    font-size: 20px !important;
+                    margin-right: 0px !important;
+                    margin-left: 0px !important;
+                    padding-left: 0px;
+                    padding-right: 5px;
+                    top: -35px !important;
+                }
+
+                .timer-panel #frame-days {
+                    padding-left: 10px !important;
+                }
+
+                .timer-panel div #days {
+                    min-width: 40px !important;
+                    font-size: 30px !important;
+                }
+
+                .timer-panel div #hours {
+                    min-width: 40px !important;
+                    font-size: 30px !important;
+                }
+
+                .timer-panel div #minutes {
+                    min-width: 40px !important;
+                    font-size: 30px !important;
+                }
+
+                .timer-panel div #seconds {
+                    min-width: 40px !important;
+                    font-size: 30px !important;
+                }
+            }
+        </style>
     </head>
     <body>
         <main class="timer-panel" style="
             background-color: #666666;
             border-radius: 20px;
             max-width: 600px;
-            min-width: 600px;
+            min-width: 30%;
             padding: 10px;
             margin-left: auto;
             margin-right: auto;
@@ -29,7 +91,7 @@
                 font-family: 'Source Serif 4', serif;
                 font-size: 35px;">Shutdown Duration</h1>
             <p>The Federal goverment has been shut down for:</p>
-            <div style="display: inline-block;
+            <div id="frame-days" style="display: inline-block;
                 margin-right: 30px;
                 margin-bottom: 0px;
                 margin-left: 4px;
@@ -57,7 +119,7 @@
                 <p style="font-size: 25px;
                     margin-top: 5px;">hours</p>
             </div>
-            <p style="display: inline-block;
+            <p id="colon-one" style="display: inline-block;
                 font-size: 50px;
                 margin-right: 15px;
                 margin-bottom: 0px;
@@ -77,7 +139,7 @@
                 <p style="font-size: 25px;
                     margin-top: 5px;">minutes</p>
             </div>
-            <p style="display: inline-block;
+            <p id="colon-two" style="display: inline-block;
                 font-size: 50px;
                 margin-right: 15px;
                 margin-bottom: 0px;
