@@ -90,7 +90,7 @@
                 margin-bottom: 0px;
                 font-family: 'Source Serif 4', serif;
                 font-size: 35px;">Shutdown Duration</h1>
-            <p>The Federal goverment has been shut down for:</p>
+            <p>The Federal government had shut down for:</p>
             <div id="frame-days" style="display: inline-block;
                 margin-right: 30px;
                 margin-bottom: 0px;
@@ -165,12 +165,22 @@
         <script>
             // Set up startTime variable as the starting date and time 
             const startTime = new Date("2025-10-01T00:01:00").getTime();
+            
+            // **ADD a target time when the timer will stop**
+            const stopTime = new Date("2025-11-12T23:01:00").getTime();
+            
+            // **Save the inteerval ID so we can clear it later**
+
             // Call the function and run it every 1 second (1000 milliseconds)
-            setInterval(() => {
+            const timer = setInterval(() => {
                 // now variable = right now time 
                 const now = new Date().getTime();
+                
+                // **Add this line to make it freeze at the target time if reached or passed the stop time**
+                const currentTime = now >= stopTime ? stopTime : now;
+                
                 // elapsed variable = right now time subtracted by the starting date and time  
-                const elapsed = now - startTime;
+                const elapsed = currentTime - startTime;
                 // the result will be in milliseconds so we will change it into normal units 
                 const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
@@ -186,6 +196,11 @@
                 document.getElementById("hours").textContent = `${h}`;
                 document.getElementById("minutes").textContent = `${m}`;
                 document.getElementById("seconds").textContent = `${s}`;
+
+                // **Add this line to stop the timer when the target time is reached**
+                if (now >= stopTime) {
+                    clearInterval(timer);
+                }
             }, 1000);
         </script>
     </body>
